@@ -173,25 +173,25 @@ for (var i = 0; i < xls.length; i++) {
 
  //banner右拉选项卡部分开始  
 
-    var bannerleft=$(".el",box);
-    // var bannerlefts=$("a",bannerleft);//选项集合;
-    var bannerleftas=$(".banner-lefta");//右拉列表集合
-    for (var i = 0; i < bannerleft.length; i++) {
-      bannerleft[i].index=i;
-      bannerleft[i].onmouseover=function(){
-        for (var j = 0; j< bannerleftas.length;j++) {
-          bannerleftas[j].style.display="none";
-        };
-        bannerleftas[this.index].style.display="block";
-      }
-      bannerleft[i].onmouseout=function(){
-        for (var j = 0; j< bannerleftas.length;j++) {
-          bannerleftas[j].style.display="none";
-        };
+    // var bannerleft=$(".banner-left-little",box);
+    // // var bannerlefts=$("a",bannerleft);//选项集合;
+    // var bannerleftas=$(".banner-lefta");//右拉列表集合
+    // for (var i = 0; i < bannerleft.length; i++) {
+    //   bannerleft[i].index=i;
+    //   bannerleft[i].onmouseover=function(){
+    //     for (var j = 0; j< bannerleftas.length;j++) {
+    //       bannerleftas[j].style.display="none";
+    //     };
+    //     bannerleftas[this.index].style.display="block";
+    //   }
+    //   bannerleft[i].onmouseout=function(){
+    //     for (var j = 0; j< bannerleftas.length;j++) {
+    //       bannerleftas[j].style.display="none";
+    //     };
 
-      }
+    //   }
 
-    };
+    // };
   // //banner右拉选项卡部分结束
 
 //content1选项卡部分开始 

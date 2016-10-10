@@ -408,7 +408,7 @@ margin-top: 7px;
   top: 0px;
   float: left;
   z-index: 200;
-  display: none;
+  /*display: none;*/
 }
 .banner-leftaa{
   width: 335px;
