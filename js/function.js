@@ -1,91 +1,25 @@
-  //获取属性的函数
-  function getStyle(obj,attr){
-      if (obj.currentStyle) {
-        return obj.currentStyle[attr];
-      }else{
-        return window.getComputedStyle(obj,null)[attr];
-      }
-    }
 
-
-
- //获取id选择器，类选择器，标签选择器，和页面加载事件
-function $(selector,range){
-	 
-     if (typeof selector=="string") {
-         var range=range||document;
-     	// alert("获取")
-     	if (selector.charAt(0)=="#") {
-     		// alert("1");
-     		return document.getElementById(selector.substr(1));
-
-     	};
-     	if (selector.charAt(0)==".") {
-     		return getclass(selector.substr(1),range);
-     	};
-     	
-     	if(/^[a-zA-Z][a-zA-Z1-6]{0,9}$/.test(selector)) {
-     		// alert("1");
-     		return range.getElementsByTagName(selector)
-     		
-     	};
-     }else if (typeof selector=="function") {
-     	// alert("页面加载")
-     	  window.onload=selector;
-     };
+	function getclass(classname,range){
+		if(document.getElementsByClassName){//判断浏览器是否支持classname引用		
+			return range.getElementsByClassName(classname)//如果支持就返回引用的值
+		}//否则执行下面代码
+		else{			
+		var all=range.getElementsByTagName('*')//首先找出所有的对象
+		var arr=[];//创建一个新数组
+		for(var i=0;i<all.length;i++){//把所有的对象都遍历出来
+			if(checkclass(all[i].className,classname)){//判断如果要找的对象==classname
+		    arr.push(all[i]);//就把找出的所有符合classname的值放入到arr这个数组里
+			}
+		 }
+		 return arr;//返回这个数组
+	}
 }
-
-
- /*
-ie6-8不支持getElementsByClassName，处理兼容 传两个参数，
- */
- function getclass(classname,range){
- 	if (document.getElementsByClassName){
- 		//支持  用getElementsByClassName	
- 		return range.getElementsByClassName(classname);
- 	}else{//不支持；以数组的形式返回这些
- 		 var arr=[];
-         var all=range.getElementsByTagName('*');
-         for (var i =0;i<all.length; i++) {
-              //all[i].className==classname
-         	 if (cheakclass(all[i].className,classname)) {
-         		arr.push(all[i]);
-         	};
-         };
-         return arr;
- 	}	
- }
-
-function cheakclass(aal,classname){//拆分
-	var alla=aal.split(' ');
-	for (var i =0; i<alla.length; i++) {
-		if(alla[i]==classname){
-			return true;
+		function checkclass(tagname,aclass){
+			var arr=tagname.split(' ');//把字符串按照空格的形式分割成数组
+			for(var i=0;i<arr.length;i++){//遍历这个数组
+				if(arr[i]==aclass){//判断如果数组有aclass就返回一个true
+					return true;
+				}
+			}
+			return false;
 		}
-	};
-	return false;
-}
-
-
-/*
-ie6-8不支持getElementsByClassName，处理兼容 传一个参数
- */
-// function getclass(classname){
-//  	if (document.getElementsByClassName) {
-//  		//支持
-//  		return document.getElementsByClassName(classname);
-//  	}else{
-//  		 var arr=[];
-//          var all=document.getElementsByTagName('*');
-//          for (var i =0;i<all.length; i++) {
-//          	 if (all[i].className==classname;) {
-//          		arr.push(all[i]);
-//          	};
-//          };
-//          return arr;
-//  	}	
-//  }
-
-
-
-	
